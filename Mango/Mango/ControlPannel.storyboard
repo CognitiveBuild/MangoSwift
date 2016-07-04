@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Oah-tP-ZKz">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Control Pannel-->
+        <scene sceneID="prW-tO-FJQ">
+            <objects>
+                <viewController id="Oah-tP-ZKz" customClass="ControlPannel" customModule="Mango" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P95-i7-cBf"/>
+                        <viewControllerLayoutGuide type="bottom" id="LRr-74-rJa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hUQ-2d-xOo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="128"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRP-26-HbO" customClass="CircleButton" customModule="Mango" customModuleProvider="target">
+                                <rect key="frame" x="275" y="39" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.074509803921568626" green="0.54117647058823526" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="5dQ-ya-q0x"/>
+                                    <constraint firstAttribute="width" secondItem="wRP-26-HbO" secondAttribute="height" multiplier="1:1" id="vaZ-I6-425"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ck9-WV-eRQ">
+                                <rect key="frame" x="159" y="53" width="46" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5MC-gc-g4f">
+                                <rect key="frame" x="395" y="49" width="32" height="30"/>
+                                <state key="normal" title="save"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wRP-26-HbO" firstAttribute="centerY" secondItem="hUQ-2d-xOo" secondAttribute="centerY" id="15W-Gx-NhF"/>
+                            <constraint firstItem="wRP-26-HbO" firstAttribute="leading" secondItem="Ck9-WV-eRQ" secondAttribute="trailing" constant="70" id="6hA-DD-AFb"/>
+                            <constraint firstItem="wRP-26-HbO" firstAttribute="centerX" secondItem="hUQ-2d-xOo" secondAttribute="centerX" id="7Ei-Jn-LaD"/>
+                            <constraint firstItem="5MC-gc-g4f" firstAttribute="leading" secondItem="wRP-26-HbO" secondAttribute="trailing" constant="70" id="LpO-3n-7kn"/>
+                            <constraint firstItem="5MC-gc-g4f" firstAttribute="centerY" secondItem="hUQ-2d-xOo" secondAttribute="centerY" id="RKt-r7-hk7"/>
+                            <constraint firstItem="Ck9-WV-eRQ" firstAttribute="centerY" secondItem="hUQ-2d-xOo" secondAttribute="centerY" id="bIe-9N-AnY"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="128"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s91-Yo-Apv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="145" y="29"/>
+        </scene>
+    </scenes>
+</document>

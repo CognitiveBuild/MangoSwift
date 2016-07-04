@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aum-Yt-Q15">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="bzP-gG-5b7">
+            <objects>
+                <navigationController id="aum-Yt-Q15" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="52O-00-HDG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.074509803921568626" green="0.54117647058823526" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.76078431369999999" green="0.0" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="aV5-y1-pVw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bWQ-7z-dQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-551" y="-27"/>
+        </scene>
+        <!--Catalog-->
+        <scene sceneID="aUX-dG-rfX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Catalog" id="hPo-br-XpS" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1kY-Bx-yAU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-85.5" y="-280"/>
+        </scene>
+        <!--mango-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="mango" id="BYZ-38-t0r" customClass="MainViewController" customModule="Mango" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K2E-mt-iBd">
+                                <rect key="frame" x="0.0" y="472" width="600" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="fMe-NI-pXT"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="fnU-AM-9fs" kind="embed" id="48d-4v-aiQ"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Biu-iA-Out" userLabel="Control Pannel">
+                                <rect key="frame" x="0.0" y="64" width="600" height="408"/>
+                                <connections>
+                                    <segue destination="rxy-d1-xM2" kind="embed" id="s6H-sp-cFj"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="K2E-mt-iBd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9gy-me-MIb"/>
+                            <constraint firstItem="Biu-iA-Out" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CuS-V9-Lt6"/>
+                            <constraint firstAttribute="trailing" secondItem="Biu-iA-Out" secondAttribute="trailing" id="DbJ-kN-v6e"/>
+                            <constraint firstItem="Biu-iA-Out" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="LMY-0Z-tfL"/>
+                            <constraint firstAttribute="trailing" secondItem="K2E-mt-iBd" secondAttribute="trailing" id="UFx-iw-y6L"/>
+                            <constraint firstItem="K2E-mt-iBd" firstAttribute="top" secondItem="Biu-iA-Out" secondAttribute="bottom" id="p2C-kw-tdv"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="K2E-mt-iBd" secondAttribute="bottom" id="xf9-un-uqK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Mango" id="MSM-jh-aif">
+                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="FXK-OH-8tg">
+                            <connections>
+                                <segue destination="hPo-br-XpS" kind="show" id="Y3P-Ti-1vc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="279" y="-27"/>
+        </scene>
+        <!--Mango View Controller-->
+        <scene sceneID="D1g-Sp-d5j">
+            <objects>
+                <tableViewController id="rxy-d1-xM2" customClass="MangoViewController" customModule="Mango" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="ZUK-SY-eaG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="408"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection headerTitle="Transcription" id="ryp-ii-tqa">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="115" id="gOM-Yi-sXd">
+                                        <rect key="frame" x="0.0" y="49.5" width="600" height="115"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gOM-Yi-sXd" id="wrS-FM-N9L">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="114.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LhJ-gM-DGE">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="114.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">hi I am Mango.
+
+I could hear what people are saying, then translate the speech into language you preffered. </string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="LhJ-gM-DGE" secondAttribute="bottom" id="IhL-fR-RKA"/>
+                                                <constraint firstItem="LhJ-gM-DGE" firstAttribute="top" secondItem="wrS-FM-N9L" secondAttribute="top" id="doL-RH-TF2"/>
+                                                <constraint firstItem="LhJ-gM-DGE" firstAttribute="leading" secondItem="wrS-FM-N9L" secondAttribute="leading" id="mti-Mx-1AU"/>
+                                                <constraint firstAttribute="trailing" secondItem="LhJ-gM-DGE" secondAttribute="trailing" id="s9L-uz-U2b"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Translation" id="Tcq-0R-e0X">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="115" id="HS8-m5-llA">
+                                        <rect key="frame" x="0.0" y="214.5" width="600" height="115"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HS8-m5-llA" id="jzb-rK-YB4">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="114.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eVw-DS-ajQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="114.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">嗨， 我是芒果。
+
+我能听到人们在说些什么，然后将语音转换成您喜欢的语言。</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="eVw-DS-ajQ" firstAttribute="top" secondItem="jzb-rK-YB4" secondAttribute="top" id="3bQ-q8-9XN"/>
+                                                <constraint firstItem="eVw-DS-ajQ" firstAttribute="leading" secondItem="jzb-rK-YB4" secondAttribute="leading" id="DJt-xm-kyN"/>
+                                                <constraint firstAttribute="trailing" secondItem="eVw-DS-ajQ" secondAttribute="trailing" id="E7O-lu-wpP"/>
+                                                <constraint firstAttribute="bottom" secondItem="eVw-DS-ajQ" secondAttribute="bottom" id="QfE-ag-MhE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="rxy-d1-xM2" id="8ih-zc-FzZ"/>
+                            <outlet property="delegate" destination="rxy-d1-xM2" id="05s-vt-RSs"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Txm-7O-dvR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1078" y="-27"/>
+        </scene>
+        <!--ControlPannel-->
+        <scene sceneID="jjL-uY-UK2">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ControlPannel" storyboardName="ControlPannel" id="fnU-AM-9fs" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YSb-DA-PI7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="279.5" y="416"/>
+        </scene>
+    </scenes>
+</document>
