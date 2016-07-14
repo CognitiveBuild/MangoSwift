@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B50F0531D378D5A00A23EC7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F04E1D378D5A00A23EC7 /* Alamofire.framework */; };
+		2B50F0541D378D5A00A23EC7 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F04F1D378D5A00A23EC7 /* Freddy.framework */; };
+		2B50F0551D378D5A00A23EC7 /* SpeechToTextV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0501D378D5A00A23EC7 /* SpeechToTextV1.framework */; };
+		2B50F0561D378D5A00A23EC7 /* TextToSpeechV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0511D378D5A00A23EC7 /* TextToSpeechV1.framework */; };
+		2B50F0571D378D5A00A23EC7 /* ToneAnalyzerV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0521D378D5A00A23EC7 /* ToneAnalyzerV3.framework */; };
+		2B50F0581D378D8600A23EC7 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F04F1D378D5A00A23EC7 /* Freddy.framework */; };
+		2B50F0591D378D8600A23EC7 /* Freddy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F04F1D378D5A00A23EC7 /* Freddy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2B50F05A1D378D9B00A23EC7 /* SpeechToTextV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0501D378D5A00A23EC7 /* SpeechToTextV1.framework */; };
+		2B50F05B1D378D9B00A23EC7 /* SpeechToTextV1.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0501D378D5A00A23EC7 /* SpeechToTextV1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2B50F05C1D378D9B00A23EC7 /* TextToSpeechV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0511D378D5A00A23EC7 /* TextToSpeechV1.framework */; };
+		2B50F05D1D378D9B00A23EC7 /* TextToSpeechV1.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0511D378D5A00A23EC7 /* TextToSpeechV1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2B50F05E1D378DAD00A23EC7 /* ToneAnalyzerV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0521D378D5A00A23EC7 /* ToneAnalyzerV3.framework */; };
+		2B50F05F1D378DAD00A23EC7 /* ToneAnalyzerV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0521D378D5A00A23EC7 /* ToneAnalyzerV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2B50F0611D378DCC00A23EC7 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0601D378DCC00A23EC7 /* Starscream.framework */; };
+		2B50F0621D378DDD00A23EC7 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0601D378DCC00A23EC7 /* Starscream.framework */; };
+		2B50F0631D378DDD00A23EC7 /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0601D378DCC00A23EC7 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2B50F0651D378DEF00A23EC7 /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0641D378DEF00A23EC7 /* RestKit.framework */; };
+		2B50F0661D378E0100A23EC7 /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0641D378DEF00A23EC7 /* RestKit.framework */; };
+		2B50F0671D378E0100A23EC7 /* RestKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0641D378DEF00A23EC7 /* RestKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2BCE38871D2A1573007FA5D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCE38861D2A1573007FA5D4 /* AppDelegate.swift */; };
 		2BCE388C1D2A1573007FA5D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCE388A1D2A1573007FA5D4 /* Main.storyboard */; };
 		2BCE388E1D2A1573007FA5D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BCE388D1D2A1573007FA5D4 /* Assets.xcassets */; };
@@ -45,7 +64,33 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2B50F02E1D37856A00A23EC7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2B50F05D1D378D9B00A23EC7 /* TextToSpeechV1.framework in Embed Frameworks */,
+				2B50F05F1D378DAD00A23EC7 /* ToneAnalyzerV3.framework in Embed Frameworks */,
+				2B50F0591D378D8600A23EC7 /* Freddy.framework in Embed Frameworks */,
+				2B50F0631D378DDD00A23EC7 /* Starscream.framework in Embed Frameworks */,
+				2B50F05B1D378D9B00A23EC7 /* SpeechToTextV1.framework in Embed Frameworks */,
+				2B50F0671D378E0100A23EC7 /* RestKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2B50F04E1D378D5A00A23EC7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		2B50F04F1D378D5A00A23EC7 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = Carthage/Build/iOS/Freddy.framework; sourceTree = "<group>"; };
+		2B50F0501D378D5A00A23EC7 /* SpeechToTextV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechToTextV1.framework; path = Carthage/Build/iOS/SpeechToTextV1.framework; sourceTree = "<group>"; };
+		2B50F0511D378D5A00A23EC7 /* TextToSpeechV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TextToSpeechV1.framework; path = Carthage/Build/iOS/TextToSpeechV1.framework; sourceTree = "<group>"; };
+		2B50F0521D378D5A00A23EC7 /* ToneAnalyzerV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToneAnalyzerV3.framework; path = Carthage/Build/iOS/ToneAnalyzerV3.framework; sourceTree = "<group>"; };
+		2B50F0601D378DCC00A23EC7 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
+		2B50F0641D378DEF00A23EC7 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = "<group>"; };
 		2BCE38831D2A1573007FA5D4 /* Mango.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mango.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BCE38861D2A1573007FA5D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BCE388B1D2A1573007FA5D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -78,6 +123,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B50F0651D378DEF00A23EC7 /* RestKit.framework in Frameworks */,
+				2B50F0611D378DCC00A23EC7 /* Starscream.framework in Frameworks */,
+				2B50F05A1D378D9B00A23EC7 /* SpeechToTextV1.framework in Frameworks */,
+				2B50F0661D378E0100A23EC7 /* RestKit.framework in Frameworks */,
+				2B50F0531D378D5A00A23EC7 /* Alamofire.framework in Frameworks */,
+				2B50F0541D378D5A00A23EC7 /* Freddy.framework in Frameworks */,
+				2B50F0621D378DDD00A23EC7 /* Starscream.framework in Frameworks */,
+				2B50F05E1D378DAD00A23EC7 /* ToneAnalyzerV3.framework in Frameworks */,
+				2B50F05C1D378D9B00A23EC7 /* TextToSpeechV1.framework in Frameworks */,
+				2B50F0551D378D5A00A23EC7 /* SpeechToTextV1.framework in Frameworks */,
+				2B50F0561D378D5A00A23EC7 /* TextToSpeechV1.framework in Frameworks */,
+				2B50F0581D378D8600A23EC7 /* Freddy.framework in Frameworks */,
+				2B50F0571D378D5A00A23EC7 /* ToneAnalyzerV3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,9 +156,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B50F0261D37849400A23EC7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2B50F0641D378DEF00A23EC7 /* RestKit.framework */,
+				2B50F0601D378DCC00A23EC7 /* Starscream.framework */,
+				2B50F04E1D378D5A00A23EC7 /* Alamofire.framework */,
+				2B50F04F1D378D5A00A23EC7 /* Freddy.framework */,
+				2B50F0501D378D5A00A23EC7 /* SpeechToTextV1.framework */,
+				2B50F0511D378D5A00A23EC7 /* TextToSpeechV1.framework */,
+				2B50F0521D378D5A00A23EC7 /* ToneAnalyzerV3.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2BCE387A1D2A1573007FA5D4 = {
 			isa = PBXGroup;
 			children = (
+				2B50F0261D37849400A23EC7 /* Frameworks */,
 				2BCE38851D2A1573007FA5D4 /* Mango */,
 				2BCE389A1D2A1573007FA5D4 /* MangoTests */,
 				2BCE38A51D2A1573007FA5D4 /* MangoUITests */,
@@ -219,6 +292,8 @@
 				2BCE387F1D2A1573007FA5D4 /* Sources */,
 				2BCE38801D2A1573007FA5D4 /* Frameworks */,
 				2BCE38811D2A1573007FA5D4 /* Resources */,
+				2B50F02E1D37856A00A23EC7 /* Embed Frameworks */,
+				2B50F02F1D3785D400A23EC7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -339,6 +414,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2B50F02F1D3785D400A23EC7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2BCE387F1D2A1573007FA5D4 /* Sources */ = {
@@ -497,6 +589,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				INFOPLIST_FILE = Mango/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -509,6 +602,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				INFOPLIST_FILE = Mango/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -582,6 +676,7 @@
 				2BCE38AD1D2A1573007FA5D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2BCE38AE1D2A1573007FA5D4 /* Build configuration list for PBXNativeTarget "MangoTests" */ = {
 			isa = XCConfigurationList;
@@ -590,6 +685,7 @@
 				2BCE38B01D2A1573007FA5D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2BCE38B11D2A1573007FA5D4 /* Build configuration list for PBXNativeTarget "MangoUITests" */ = {
 			isa = XCConfigurationList;
@@ -598,6 +694,7 @@
 				2BCE38B31D2A1573007FA5D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
