@@ -10,6 +10,9 @@ import UIKit
 
 class MangoViewController: UITableViewController {
 
+    @IBOutlet weak var transcriptionTextView: UITextView!
+    @IBOutlet weak var translationTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -92,4 +95,15 @@ class MangoViewController: UITableViewController {
     }
     */
 
+}
+
+
+//MARK: public API
+extension MangoViewController {
+    
+    func clearTextView() {
+        self.transcriptionTextView.text = ""
+        self.translationTextView.text = ""
+    }
+    
 }
