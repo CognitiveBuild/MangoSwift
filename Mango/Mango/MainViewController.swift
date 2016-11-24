@@ -27,15 +27,15 @@ class MainViewController: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         //TODO:
         if segue.identifier == "ControlPanel" {
-            self.controlPanel = segue.destinationViewController as! ControlPanel
+            self.controlPanel = segue.destination as! ControlPanel
             self.controlPanel.delegate = self
         } else if segue.identifier == "MangoViewController" {
-            self.mangoVC = segue.destinationViewController as! MangoViewController
+            self.mangoVC = segue.destination as! MangoViewController
         }
     }
 }
@@ -47,11 +47,11 @@ extension MainViewController: ControlPanelDelegate {
         self.mangoVC.clearTextView()
     }
     
-    func capturedSpeech(text: String) {
+    func capturedSpeech(_ text: String) {
         self.mangoVC.transcriptionTextView.text = text
     }
     
-    func translatedSpeech(text: String) {
+    func translatedSpeech(_ text: String) {
         self.mangoVC.translationTextView.text = text
     }
     

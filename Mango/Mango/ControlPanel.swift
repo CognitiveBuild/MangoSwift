@@ -14,8 +14,8 @@ import AVFoundation
 
 protocol ControlPanelDelegate {
     func didClickedActionButton()
-    func capturedSpeech(text: String)
-    func translatedSpeech(text: String)
+    func capturedSpeech(_ text: String)
+    func translatedSpeech(_ text: String)
 }
 
 class ControlPanel: UIViewController {
@@ -27,7 +27,7 @@ class ControlPanel: UIViewController {
     var translator: LanguageTranslator? = nil
     var player: AVAudioPlayer? = nil
     var isStreaming = false
-    var stopStreaming: (Void -> Void)? = nil
+    var stopStreaming: ((Void) -> Void)? = nil
     var delegate: ControlPanelDelegate?
     
     @IBOutlet weak var actionButton: CircleButton!
@@ -42,27 +42,27 @@ class ControlPanel: UIViewController {
         instantiatTranslator()
     }
     
-    @IBAction func actionButtonClicked(sender: AnyObject) {
+    @IBAction func actionButtonClicked(_ sender: AnyObject) {
         startStopStreaming()
         startStopRecording()
         self.delegate?.didClickedActionButton()
     }
     
-    private func setupSessionAndRecorder() {
+    fileprivate func setupSessionAndRecorder() {
         // create file to store recordings
-        let documents = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,
-                                                            .UserDomainMask, true)[0]
+        let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory,
+                                                            .userDomainMask, true)[0]
         let filename = "SpeechToTextRecording.wav"
-        let filepath = NSURL(fileURLWithPath: documents + "/" + filename)
+        let filepath = URL(fileURLWithPath: documents + "/" + filename)
         
         // set up session and recorder
         let session = AVAudioSession.sharedInstance()
         var settings = [String: AnyObject]()
-        settings[AVSampleRateKey] = NSNumber(float: 44100.0)
-        settings[AVNumberOfChannelsKey] = NSNumber(int: 1)
+        settings[AVSampleRateKey] = NSNumber(value: 44100.0 as Float)
+        settings[AVNumberOfChannelsKey] = NSNumber(value: 1 as Int32)
         do {
             try session.setCategory(AVAudioSessionCategoryPlayAndRecord)
-            recorder = try AVAudioRecorder(URL: filepath, settings: settings)
+            recorder = try AVAudioRecorder(url: filepath, settings: settings)
         } catch {
             failure("Audio Recording", message: "Error setting up session/recorder.")
         }
@@ -75,7 +75,7 @@ class ControlPanel: UIViewController {
         
         // prepare recorder to record
         recorder.delegate = self
-        recorder.meteringEnabled = true
+        recorder.isMeteringEnabled = true
         recorder.prepareToRecord()
         
         // create capture session
@@ -85,17 +85,17 @@ class ControlPanel: UIViewController {
         }
         
         // set microphone as a capture session input
-        let microphoneDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeAudio)
+        let microphoneDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio)
         let microphoneInput = try? AVCaptureDeviceInput(device: microphoneDevice)
         if captureSession.canAddInput(microphoneInput) {
             captureSession.addInput(microphoneInput)
         }
     }
     
-    private func instantiateSTT() {
+    fileprivate func instantiateSTT() {
         // identify credentials file
-        let bundle = NSBundle(forClass: self.dynamicType)
-        guard let credentialsURL = bundle.pathForResource("Credentials", ofType: "plist") else {
+        let bundle = Bundle(for: type(of: self))
+        guard let credentialsURL = bundle.path(forResource: "Credentials", ofType: "plist") else {
             failure("Loading Credentials", message: "Unable to locate credentials file.")
             return
         }
@@ -122,26 +122,27 @@ class ControlPanel: UIViewController {
         stt = SpeechToText(username: user, password: password)
     }
     
-    @IBAction func playButtonclicked(sender: AnyObject) {
+    @IBAction func playButtonclicked(_ sender: AnyObject) {
         print(#function)
         self.playRecording()
     }
     
     
-    func translate(text: String, success: LanguageTranslatorV2.TranslateResponse -> Void) {
-        let failure = { (error: NSError) in print(error) }
-        translator!.translate(text, modelID: "zh-en-patent", failure: failure, success: success)
+    func translate(_ text: String, success: (LanguageTranslatorV2.TranslateResponse) -> Void) {
+//        let failure = { (error: Error) in print(error) }
+//        translator!.translate(text, withModelID: "zh-en-patent", failure: failure, success: success)
     }
     
-    func textToSpeech(text: String) {
+    func textToSpeech(_ text: String) {
         print(#function)
         guard let tts  = tts else {
             self.failure("TTS", message: "TextToSpeech not properly set up.")
             return
         }
         
-        let failure = { (error: NSError) in print(error) }
-        tts.synthesize(text, voice: SynthesisVoice.US_Allison, failure: failure) { data in
+        let failure = { (error: Error) in print(error) }
+        
+        tts.synthesize(text, voice: SynthesisVoice.us_Allison.rawValue, failure: failure) { data in
             do {
                 self.player = try AVAudioPlayer(data: data)
                 self.player?.play()
@@ -151,7 +152,26 @@ class ControlPanel: UIViewController {
         }
     }
     
-    private func startStopStreaming() {
+    fileprivate func startStreaming() {
+        guard let stt = stt else {
+            return
+        }
+        
+        var settings = RecognitionSettings(contentType: .opus)
+        settings.continuous = true
+        settings.interimResults = true
+        let failure = { (error: Error) in print(error) }
+        let _ = stt.recognizeMicrophone(settings: settings, failure: failure) { results in
+            print(results.bestTranscript)
+        }
+    }
+    
+    fileprivate func stopStreaming1() {
+        stt?.stopRecognizeMicrophone()
+    }
+    
+    //
+    fileprivate func startStopStreaming() {
         print(#function)
         // stop if already streaming
         if (isStreaming) {
@@ -170,13 +190,12 @@ class ControlPanel: UIViewController {
         
         // ensure SpeechToText service is up
         guard let stt = stt else {
-            failure("STT Streaming", message: "SpeechToText not properly set up.")
             return
         }
         
         // ensure there is at least one audio input device available
-        let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeAudio)
-        guard !devices.isEmpty else {
+        let devices = AVCaptureDevice.devices(withMediaType: AVMediaTypeAudio)
+        guard !(devices?.isEmpty)! else {
             let domain = "swift.ViewController"
             let code = -1
             let description = "Unable to access the microphone."
@@ -193,44 +212,27 @@ class ControlPanel: UIViewController {
         }
         
         // add microphone as input to capture session
-        let microphoneDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeAudio)
+        let microphoneDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio)
         let microphoneInput = try? AVCaptureDeviceInput(device: microphoneDevice)
         if captureSession.canAddInput(microphoneInput) {
             captureSession.addInput(microphoneInput)
         }
         
-        // configure settings for streaming
-        var settings = TranscriptionSettings(contentType: .L16(rate: 44100, channels: 1))
-        settings.continuous = true
+        // define recognition request settings
+        var settings = RecognitionSettings(contentType: .opus)
         settings.interimResults = true
-        settings.model = "zh-CN_BroadbandModel" //TODO: this should be configurable
-        settings.inactivityTimeout = 60
+        settings.continuous = true
         
-        // create a transcription output
-        let outputOpt = stt.createTranscriptionOutput(settings, failure: failureStreaming) {
-            results in
-            self.showResults(results)
-        }
-        
-        // access tuple elements
-        guard let output = outputOpt else {
-            isStreaming = false
-//            startStopStreamingCustomButton.setTitle("Start Streaming (Custom)", forState: .Normal)
-            return
-        }
-        let transcriptionOutput = output.0
-        stopStreaming = output.1
-        
-        // add transcription output to capture session
-        if captureSession.canAddOutput(transcriptionOutput) {
-            captureSession.addOutput(transcriptionOutput)
+        let failure = { (error: Error) in print(error) }
+        let _ = stt.recognizeMicrophone(settings: settings, failure: failure) { results in
+            print(results.bestTranscript)
         }
         
         // start streaming
         captureSession.startRunning()
     }
     
-    private func startStopRecording() {
+    fileprivate func startStopRecording() {
         print(#function)
         // ensure recorder is set up
         guard let recorder = recorder else {
@@ -240,18 +242,18 @@ class ControlPanel: UIViewController {
         
         // stop playing previous recording
         if let player = player {
-            if (player.playing) {
+            if (player.isPlaying) {
                 player.stop()
             }
         }
         
         // start/stop recording
-        if (!recorder.recording) {
+        if (!recorder.isRecording) {
             do {
                 let session = AVAudioSession.sharedInstance()
                 try session.setActive(true)
                 recorder.record()
-                actionButton.backgroundColor = UIColor.redColor()
+                actionButton.backgroundColor = UIColor.red
                 //                startStopRecordingButton.setTitle("Stop Recording", forState: .Normal)
                 //                playRecordingButton.enabled = false
                 //                transcribeButton.enabled = false
@@ -265,7 +267,7 @@ class ControlPanel: UIViewController {
                 player?.stop()
                 player?.prepareToPlay()
                 try session.setActive(false)
-                actionButton.backgroundColor = UIColor.greenColor()
+                actionButton.backgroundColor = UIColor.green
                 //                startStopRecordingButton.setTitle("Start Recording", forState: .Normal)
                 //                playRecordingButton.enabled = true
                 //                transcribeButton.enabled = true
@@ -275,43 +277,43 @@ class ControlPanel: UIViewController {
         }
     }
     
-    private func failure(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "OK", style: .Default) { action in }
+    fileprivate func failure(_ title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default) { action in }
         alert.addAction(ok)
-        presentViewController(alert, animated: true) { }
+        present(alert, animated: true) { }
     }
     
-    private func failureData(error: NSError) {
+    fileprivate func failureData(_ error: NSError) {
         let title = "Speech to Text Error:\nTranscribe"
         let message = error.localizedDescription
         failure(title, message: message)
     }
     
-    private func failureStreaming(error: NSError) {
+    fileprivate func failureStreaming(_ error: NSError) {
         let title = "Speech to Text Error:\nStreaming (Custom)"
         let message = error.localizedDescription
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "OK", style: .Default) { action in
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default) { action in
             //            self.startStopStreamingCustomButton.enabled = true
             //            self.startStopStreamingCustomButton.setTitle("Start Streaming (Custom)",
             //                                                         forState: .Normal)
             self.isStreaming = false
         }
         alert.addAction(ok)
-        presentViewController(alert, animated: true) { }
+        present(alert, animated: true) { }
     }
     
-    private func titleCase(s: String) -> String {
-        let first = String(s.characters.prefix(1)).uppercaseString
+    fileprivate func titleCase(_ s: String) -> String {
+        let first = String(s.characters.prefix(1)).uppercased()
         return first + String(s.characters.dropFirst())
     }
     
-    private func showResults(results: [TranscriptionResult]) {
+    fileprivate func showResults(_ results: [SpeechRecognitionResult]) {
         var text = ""
         
         for result in results {
-            if let transcript = result.alternatives.last?.transcript where result.final == true {
+            if let transcript = result.alternatives.last?.transcript, result.final == true {
                 let title = titleCase(transcript)
                 text += String(title.characters.dropLast()) + "." + " "
             }
@@ -353,27 +355,27 @@ class ControlPanel: UIViewController {
 
 extension ControlPanel: AVAudioRecorderDelegate {
     
-    private func transcribe(url: NSURL) {
+    fileprivate func transcribe(_ url: URL) {
         // ensure SpeechToText service is set up
         guard let stt = stt else {
-            failure("Transcribe", message: "SpeechToText not properly set up.")
             return
         }
         
         // load data from saved recording
-        guard let data = NSData(contentsOfURL: url) else {
-            failure("Transcribe", message: "Error retrieving saved recording data.")
+        guard let data = try? Data(contentsOf: url) else {
             return
         }
         
-        // transcribe recording
-        let settings = TranscriptionSettings(contentType: .WAV)
-        stt.transcribe(data, settings: settings, failure: failureData) { results in
-            self.showResults(results)
+        var settings = RecognitionSettings(contentType: .wav)
+        settings.interimResults = true
+        
+        stt.recognize(audio: data, settings: settings) { (results) in
+            self.showResults(results.results)
         }
+       
     }
     
-    private func playRecording() {
+    fileprivate func playRecording() {
         
         // ensure recorder is set up
         guard let recorder = recorder else {
@@ -382,9 +384,9 @@ extension ControlPanel: AVAudioRecorderDelegate {
         }
         
         // play saved recording
-        if (!recorder.recording) {
+        if (!recorder.isRecording) {
             do {
-                player = try AVAudioPlayer(contentsOfURL: recorder.url)
+                player = try AVAudioPlayer(contentsOf: recorder.url)
                 player?.play()
             } catch {
                 failure("Play Recording", message: "Error creating audio player.")
@@ -397,10 +399,10 @@ extension ControlPanel: AVAudioRecorderDelegate {
 //TTS
 extension ControlPanel {
     
-    private func instantiateTTS() {
+    fileprivate func instantiateTTS() {
         // identify credentials file
-        let bundle = NSBundle(forClass: self.dynamicType)
-        guard let credentialsURL = bundle.pathForResource("Credentials", ofType: "plist") else {
+        let bundle = Bundle(for: type(of: self))
+        guard let credentialsURL = bundle.path(forResource: "Credentials", ofType: "plist") else {
             failure("Loading Credentials", message: "Unable to locate credentials file.")
             return
         }
@@ -425,15 +427,17 @@ extension ControlPanel {
         }
         
         tts = TextToSpeech(username: user, password: password)
+        
     }
 
 }
 
 extension ControlPanel {
-    private func instantiatTranslator() {
+    
+    fileprivate func instantiatTranslator() {
         // identify credentials file
-        let bundle = NSBundle(forClass: self.dynamicType)
-        guard let credentialsURL = bundle.pathForResource("Credentials", ofType: "plist") else {
+        let bundle = Bundle(for: type(of: self))
+        guard let credentialsURL = bundle.path(forResource: "Credentials", ofType: "plist") else {
             failure("Loading Credentials", message: "Unable to locate credentials file.")
             return
         }

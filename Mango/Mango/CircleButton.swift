@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable class CircleButton: UIButton {
     
-    private var backgroundLayer = CAShapeLayer()
+    fileprivate var backgroundLayer = CAShapeLayer()
     
     @IBInspectable var borderWidth: CGFloat = 0 {
         didSet {
@@ -30,12 +30,12 @@ import UIKit
     
     func setup() {
         backgroundLayer.bounds = bounds
-        backgroundLayer.position = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds))
-        let path = UIBezierPath(ovalInRect: CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame)))
-        backgroundLayer.path = path.CGPath
-        backgroundLayer.strokeColor = UIColor.whiteColor().CGColor
+        backgroundLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
+        let path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+        backgroundLayer.path = path.cgPath
+        backgroundLayer.strokeColor = UIColor.white.cgColor
         backgroundLayer.lineWidth = borderWidth
-        backgroundLayer.fillColor = UIColor.clearColor().CGColor
+        backgroundLayer.fillColor = UIColor.clear.cgColor
         layer.addSublayer(backgroundLayer)
         
         let cornerRadius = bounds.size.width > bounds.size.height ? bounds.size.height/2 : bounds.size.width/2

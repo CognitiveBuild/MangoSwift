@@ -7,28 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B50F0531D378D5A00A23EC7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F04E1D378D5A00A23EC7 /* Alamofire.framework */; };
-		2B50F0541D378D5A00A23EC7 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F04F1D378D5A00A23EC7 /* Freddy.framework */; };
-		2B50F0551D378D5A00A23EC7 /* SpeechToTextV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0501D378D5A00A23EC7 /* SpeechToTextV1.framework */; };
-		2B50F0561D378D5A00A23EC7 /* TextToSpeechV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0511D378D5A00A23EC7 /* TextToSpeechV1.framework */; };
-		2B50F0571D378D5A00A23EC7 /* ToneAnalyzerV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0521D378D5A00A23EC7 /* ToneAnalyzerV3.framework */; };
-		2B50F0581D378D8600A23EC7 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F04F1D378D5A00A23EC7 /* Freddy.framework */; };
-		2B50F0591D378D8600A23EC7 /* Freddy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F04F1D378D5A00A23EC7 /* Freddy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2B50F05A1D378D9B00A23EC7 /* SpeechToTextV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0501D378D5A00A23EC7 /* SpeechToTextV1.framework */; };
 		2B50F05B1D378D9B00A23EC7 /* SpeechToTextV1.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0501D378D5A00A23EC7 /* SpeechToTextV1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2B50F05C1D378D9B00A23EC7 /* TextToSpeechV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0511D378D5A00A23EC7 /* TextToSpeechV1.framework */; };
 		2B50F05D1D378D9B00A23EC7 /* TextToSpeechV1.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0511D378D5A00A23EC7 /* TextToSpeechV1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2B50F05E1D378DAD00A23EC7 /* ToneAnalyzerV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0521D378D5A00A23EC7 /* ToneAnalyzerV3.framework */; };
 		2B50F05F1D378DAD00A23EC7 /* ToneAnalyzerV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0521D378D5A00A23EC7 /* ToneAnalyzerV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2B50F0611D378DCC00A23EC7 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0601D378DCC00A23EC7 /* Starscream.framework */; };
-		2B50F0621D378DDD00A23EC7 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0601D378DCC00A23EC7 /* Starscream.framework */; };
-		2B50F0631D378DDD00A23EC7 /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0601D378DCC00A23EC7 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2B50F0651D378DEF00A23EC7 /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0641D378DEF00A23EC7 /* RestKit.framework */; };
-		2B50F0661D378E0100A23EC7 /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0641D378DEF00A23EC7 /* RestKit.framework */; };
 		2B50F0671D378E0100A23EC7 /* RestKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0641D378DEF00A23EC7 /* RestKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2B663C181D45D868003C3099 /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B663C171D45D868003C3099 /* Credentials.plist */; };
 		2B663C241D45F8C3003C3099 /* LanguageTranslatorV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B663C231D45F8C3003C3099 /* LanguageTranslatorV2.framework */; };
-		2B663C251D45F8F1003C3099 /* LanguageTranslatorV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B663C231D45F8C3003C3099 /* LanguageTranslatorV2.framework */; };
 		2B663C261D45F8F1003C3099 /* LanguageTranslatorV2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B663C231D45F8C3003C3099 /* LanguageTranslatorV2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2BCE38871D2A1573007FA5D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCE38861D2A1573007FA5D4 /* AppDelegate.swift */; };
 		2BCE388C1D2A1573007FA5D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCE388A1D2A1573007FA5D4 /* Main.storyboard */; };
@@ -77,9 +65,7 @@
 			files = (
 				2B50F05D1D378D9B00A23EC7 /* TextToSpeechV1.framework in Embed Frameworks */,
 				2B50F05F1D378DAD00A23EC7 /* ToneAnalyzerV3.framework in Embed Frameworks */,
-				2B50F0591D378D8600A23EC7 /* Freddy.framework in Embed Frameworks */,
 				2B663C261D45F8F1003C3099 /* LanguageTranslatorV2.framework in Embed Frameworks */,
-				2B50F0631D378DDD00A23EC7 /* Starscream.framework in Embed Frameworks */,
 				2B50F05B1D378D9B00A23EC7 /* SpeechToTextV1.framework in Embed Frameworks */,
 				2B50F0671D378E0100A23EC7 /* RestKit.framework in Embed Frameworks */,
 			);
@@ -89,12 +75,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2B50F04E1D378D5A00A23EC7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		2B50F04F1D378D5A00A23EC7 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = Carthage/Build/iOS/Freddy.framework; sourceTree = "<group>"; };
 		2B50F0501D378D5A00A23EC7 /* SpeechToTextV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechToTextV1.framework; path = Carthage/Build/iOS/SpeechToTextV1.framework; sourceTree = "<group>"; };
 		2B50F0511D378D5A00A23EC7 /* TextToSpeechV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TextToSpeechV1.framework; path = Carthage/Build/iOS/TextToSpeechV1.framework; sourceTree = "<group>"; };
 		2B50F0521D378D5A00A23EC7 /* ToneAnalyzerV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToneAnalyzerV3.framework; path = Carthage/Build/iOS/ToneAnalyzerV3.framework; sourceTree = "<group>"; };
-		2B50F0601D378DCC00A23EC7 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
 		2B50F0641D378DEF00A23EC7 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = "<group>"; };
 		2B663C171D45D868003C3099 /* Credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credentials.plist; sourceTree = "<group>"; };
 		2B663C231D45F8C3003C3099 /* LanguageTranslatorV2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LanguageTranslatorV2.framework; path = Carthage/Build/iOS/LanguageTranslatorV2.framework; sourceTree = "<group>"; };
@@ -131,20 +114,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B50F0651D378DEF00A23EC7 /* RestKit.framework in Frameworks */,
-				2B50F0611D378DCC00A23EC7 /* Starscream.framework in Frameworks */,
 				2B50F05A1D378D9B00A23EC7 /* SpeechToTextV1.framework in Frameworks */,
-				2B50F0661D378E0100A23EC7 /* RestKit.framework in Frameworks */,
-				2B50F0531D378D5A00A23EC7 /* Alamofire.framework in Frameworks */,
-				2B50F0541D378D5A00A23EC7 /* Freddy.framework in Frameworks */,
-				2B50F0621D378DDD00A23EC7 /* Starscream.framework in Frameworks */,
 				2B50F05E1D378DAD00A23EC7 /* ToneAnalyzerV3.framework in Frameworks */,
 				2B50F05C1D378D9B00A23EC7 /* TextToSpeechV1.framework in Frameworks */,
-				2B50F0551D378D5A00A23EC7 /* SpeechToTextV1.framework in Frameworks */,
 				2B663C241D45F8C3003C3099 /* LanguageTranslatorV2.framework in Frameworks */,
-				2B50F0561D378D5A00A23EC7 /* TextToSpeechV1.framework in Frameworks */,
-				2B50F0581D378D8600A23EC7 /* Freddy.framework in Frameworks */,
-				2B663C251D45F8F1003C3099 /* LanguageTranslatorV2.framework in Frameworks */,
-				2B50F0571D378D5A00A23EC7 /* ToneAnalyzerV3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,9 +143,6 @@
 			children = (
 				2B663C231D45F8C3003C3099 /* LanguageTranslatorV2.framework */,
 				2B50F0641D378DEF00A23EC7 /* RestKit.framework */,
-				2B50F0601D378DCC00A23EC7 /* Starscream.framework */,
-				2B50F04E1D378D5A00A23EC7 /* Alamofire.framework */,
-				2B50F04F1D378D5A00A23EC7 /* Freddy.framework */,
 				2B50F0501D378D5A00A23EC7 /* SpeechToTextV1.framework */,
 				2B50F0511D378D5A00A23EC7 /* TextToSpeechV1.framework */,
 				2B50F0521D378D5A00A23EC7 /* ToneAnalyzerV3.framework */,
@@ -366,19 +336,22 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = IBM;
 				TargetAttributes = {
 					2BCE38821D2A1573007FA5D4 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = N9JUJJTCYE;
+						LastSwiftMigration = 0810;
 					};
 					2BCE38961D2A1573007FA5D4 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = 2BCE38821D2A1573007FA5D4;
 					};
 					2BCE38A11D2A1573007FA5D4 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = 2BCE38821D2A1573007FA5D4;
 					};
 				};
@@ -443,7 +416,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 			);
 			outputPaths = (
 			);
@@ -535,8 +507,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -581,8 +555,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -601,6 +577,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -619,6 +596,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.iip.Mango;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -635,6 +613,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.iip.Mango;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -646,6 +625,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.iip.MangoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mango.app/Mango";
 			};
 			name = Debug;
@@ -658,6 +638,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.iip.MangoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mango.app/Mango";
 			};
 			name = Release;
@@ -669,6 +650,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.iip.MangoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Mango;
 			};
 			name = Debug;
@@ -680,6 +662,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.iip.MangoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Mango;
 			};
 			name = Release;
