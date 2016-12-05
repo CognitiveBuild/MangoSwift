@@ -30,6 +30,7 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
         //TODO:
         if segue.identifier == "ControlPanel" {
             self.controlPanel = segue.destination as! ControlPanel
@@ -44,7 +45,8 @@ class MainViewController: UIViewController {
 extension MainViewController: ControlPanelDelegate {
     
     func didClickedActionButton() {
-        self.mangoVC.clearTextView()
+        self.mangoVC.transcriptionTextView.tex
+//        self.mangoVC.clearTextView()
     }
     
     func capturedSpeech(_ text: String) {

@@ -1,11 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Oah-tP-ZKz">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Oah-tP-ZKz">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Control Pannel-->
+        <!--Control Panel-->
         <scene sceneID="prW-tO-FJQ">
             <objects>
                 <viewController id="Oah-tP-ZKz" customClass="ControlPanel" customModule="Mango" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +24,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRP-26-HbO" customClass="CircleButton" customModule="Mango" customModuleProvider="target">
                                 <rect key="frame" x="275" y="39" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.074509803921568626" green="0.54117647058823526" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.074509803921568626" green="0.54117647058823526" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="5dQ-ya-q0x"/>
                                     <constraint firstAttribute="width" secondItem="wRP-26-HbO" secondAttribute="height" multiplier="1:1" id="vaZ-I6-425"/>
@@ -33,43 +38,71 @@
                                     <action selector="actionButtonClicked:" destination="Oah-tP-ZKz" eventType="touchUpInside" id="hXX-hS-etQ"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ck9-WV-eRQ">
-                                <rect key="frame" x="159" y="53" width="46" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5MC-gc-g4f">
-                                <rect key="frame" x="395" y="49" width="32" height="30"/>
-                                <state key="normal" title="save"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26F-Z5-bim">
-                                <rect key="frame" x="529" y="49" width="30" height="30"/>
-                                <state key="normal" title="Play"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rrh-De-AEh" customClass="WaveTimeView" customModule="Mango" customModuleProvider="target">
+                                <rect key="frame" x="20" y="36" width="223" height="56"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zaX-9e-OZD" customClass="WaveView" customModule="Mango" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="80" height="40"/>
+                                        <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Af1-cG-HAa"/>
+                                            <constraint firstAttribute="width" constant="80" id="mTO-cq-r6v"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncg-ub-ZcS">
+                                        <rect key="frame" x="88" y="18" width="55" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="55" id="KHN-gz-3ch"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="zaX-9e-OZD" firstAttribute="bottom" secondItem="Rrh-De-AEh" secondAttribute="bottomMargin" id="6LR-cv-Fbd"/>
+                                    <constraint firstItem="zaX-9e-OZD" firstAttribute="top" secondItem="Rrh-De-AEh" secondAttribute="topMargin" id="Qrn-7q-QMJ"/>
+                                    <constraint firstItem="ncg-ub-ZcS" firstAttribute="leading" secondItem="zaX-9e-OZD" secondAttribute="trailing" id="lZN-Zq-CF0"/>
+                                    <constraint firstAttribute="height" constant="56" id="u9m-A8-mhF"/>
+                                    <constraint firstItem="zaX-9e-OZD" firstAttribute="leading" secondItem="Rrh-De-AEh" secondAttribute="leadingMargin" id="wN2-cs-PWa"/>
+                                    <constraint firstItem="ncg-ub-ZcS" firstAttribute="centerY" secondItem="Rrh-De-AEh" secondAttribute="centerY" id="yHg-b3-CAh"/>
+                                </constraints>
                                 <connections>
-                                    <action selector="playButtonclicked:" destination="Oah-tP-ZKz" eventType="touchUpInside" id="LkE-hB-sJR"/>
+                                    <outlet property="timeLabel" destination="ncg-ub-ZcS" id="l7c-6y-ADG"/>
+                                    <outlet property="waveView" destination="zaX-9e-OZD" id="urI-Ua-Q0D"/>
+                                </connections>
+                            </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5MC-gc-g4f">
+                                <rect key="frame" x="524" y="48" width="36" height="32"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="save"/>
+                                <connections>
+                                    <action selector="saveButtonClicked:" destination="Oah-tP-ZKz" eventType="touchUpInside" id="XW7-k5-F0G"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wRP-26-HbO" firstAttribute="centerY" secondItem="hUQ-2d-xOo" secondAttribute="centerY" id="15W-Gx-NhF"/>
-                            <constraint firstItem="wRP-26-HbO" firstAttribute="leading" secondItem="Ck9-WV-eRQ" secondAttribute="trailing" constant="70" id="6hA-DD-AFb"/>
+                            <constraint firstItem="Rrh-De-AEh" firstAttribute="centerY" secondItem="hUQ-2d-xOo" secondAttribute="centerY" id="6WD-RY-MNq"/>
                             <constraint firstItem="wRP-26-HbO" firstAttribute="centerX" secondItem="hUQ-2d-xOo" secondAttribute="centerX" id="7Ei-Jn-LaD"/>
-                            <constraint firstItem="5MC-gc-g4f" firstAttribute="leading" secondItem="wRP-26-HbO" secondAttribute="trailing" constant="70" id="LpO-3n-7kn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5MC-gc-g4f" secondAttribute="trailing" constant="20" id="M9L-xI-Tpe"/>
                             <constraint firstItem="5MC-gc-g4f" firstAttribute="centerY" secondItem="hUQ-2d-xOo" secondAttribute="centerY" id="RKt-r7-hk7"/>
-                            <constraint firstItem="Ck9-WV-eRQ" firstAttribute="centerY" secondItem="hUQ-2d-xOo" secondAttribute="centerY" id="bIe-9N-AnY"/>
+                            <constraint firstItem="wRP-26-HbO" firstAttribute="leading" secondItem="Rrh-De-AEh" secondAttribute="trailing" constant="32" id="dAU-uA-gcK"/>
+                            <constraint firstItem="Rrh-De-AEh" firstAttribute="leading" secondItem="hUQ-2d-xOo" secondAttribute="leadingMargin" id="zZs-2g-3J9"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="128"/>
                     <connections>
                         <outlet property="actionButton" destination="wRP-26-HbO" id="xxA-oK-sSW"/>
+                        <outlet property="btnSave" destination="5MC-gc-g4f" id="Vz1-Or-lbP"/>
+                        <outlet property="waveTimeView" destination="Rrh-De-AEh" id="v5M-hV-PCy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s91-Yo-Apv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="145" y="29"/>
+            <point key="canvasLocation" x="-94.400000000000006" y="70.164917541229386"/>
         </scene>
     </scenes>
 </document>

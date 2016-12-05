@@ -20,12 +20,18 @@ protocol ControlPanelDelegate {
 
 class ControlPanel: UIViewController {
 
-    var recorder: AVAudioRecorder!
-    var captureSession: AVCaptureSession?
-    var stt: SpeechToText? = nil
+    @IBOutlet weak var waveTimeView: WaveTimeView!
+    var audioService: IAudioService!
+    var audioFilePath: URL!
+    
+    var speechToText: SpeechToText!
+    var speechToTextSession: SpeechToTextSession!
+    
     var tts: TextToSpeech? = nil
-    var translator: LanguageTranslator? = nil
-    var player: AVAudioPlayer? = nil
+    var languageTranslator: LanguageTranslator? = nil
+    
+    @IBOutlet weak var btnSave: UIButton!
+    
     var isStreaming = false
     var stopStreaming: ((Void) -> Void)? = nil
     var delegate: ControlPanelDelegate?
@@ -38,8 +44,13 @@ class ControlPanel: UIViewController {
         // Do any additional setup after loading the view.
         setupSessionAndRecorder()
         
-        instantiateSTT()
-        instantiatTranslator()
+        initSpeechToText()
+        initTranslator()
+    }
+    
+    
+    @IBAction func saveButtonClicked(_ sender: Any) {
+        
     }
     
     @IBAction func actionButtonClicked(_ sender: AnyObject) {
@@ -52,47 +63,16 @@ class ControlPanel: UIViewController {
         // create file to store recordings
         let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory,
                                                             .userDomainMask, true)[0]
-        let filename = "SpeechToTextRecording.wav"
-        let filepath = URL(fileURLWithPath: documents + "/" + filename)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd_HH_mm_ss"
+        let filename = "stt_\(formatter.string(from: Date())).m4a"
+        audioFilePath = URL(fileURLWithPath: documents + "/" + filename)
+        print(audioFilePath)
         
-        // set up session and recorder
-        let session = AVAudioSession.sharedInstance()
-        var settings = [String: AnyObject]()
-        settings[AVSampleRateKey] = NSNumber(value: 44100.0 as Float)
-        settings[AVNumberOfChannelsKey] = NSNumber(value: 1 as Int32)
-        do {
-            try session.setCategory(AVAudioSessionCategoryPlayAndRecord)
-            recorder = try AVAudioRecorder(url: filepath, settings: settings)
-        } catch {
-            failure("Audio Recording", message: "Error setting up session/recorder.")
-        }
-        
-        // ensure recorder is set up
-        guard let recorder = recorder else {
-            failure("AVAudioRecorder", message: "Could not set up recorder.")
-            return
-        }
-        
-        // prepare recorder to record
-        recorder.delegate = self
-        recorder.isMeteringEnabled = true
-        recorder.prepareToRecord()
-        
-        // create capture session
-        captureSession = AVCaptureSession()
-        guard let captureSession = captureSession else {
-            return
-        }
-        
-        // set microphone as a capture session input
-        let microphoneDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio)
-        let microphoneInput = try? AVCaptureDeviceInput(device: microphoneDevice)
-        if captureSession.canAddInput(microphoneInput) {
-            captureSession.addInput(microphoneInput)
-        }
+        audioService = AudioServiceImpl()
     }
     
-    fileprivate func instantiateSTT() {
+    fileprivate func initSpeechToText() {
         // identify credentials file
         let bundle = Bundle(for: type(of: self))
         guard let credentialsURL = bundle.path(forResource: "Credentials", ofType: "plist") else {
@@ -119,18 +99,19 @@ class ControlPanel: UIViewController {
             return
         }
         
-        stt = SpeechToText(username: user, password: password)
+        
+        speechToText = SpeechToText(username: user, password: password)
+
+        speechToTextSession = SpeechToTextSession(username: user, password: password, model: "zh-CN_BroadbandModel")
+        
+//        speechToText.getModels { (models) in
+//            print(models)
+//        }
     }
     
     @IBAction func playButtonclicked(_ sender: AnyObject) {
         print(#function)
         self.playRecording()
-    }
-    
-    
-    func translate(_ text: String, success: (LanguageTranslatorV2.TranslateResponse) -> Void) {
-//        let failure = { (error: Error) in print(error) }
-//        translator!.translate(text, withModelID: "zh-en-patent", failure: failure, success: success)
     }
     
     func textToSpeech(_ text: String) {
@@ -143,138 +124,99 @@ class ControlPanel: UIViewController {
         let failure = { (error: Error) in print(error) }
         
         tts.synthesize(text, voice: SynthesisVoice.us_Allison.rawValue, failure: failure) { data in
-            do {
-                self.player = try AVAudioPlayer(data: data)
-                self.player?.play()
-            } catch {
-                self.failure("textToSpeech", message: "Error creating audio player.")
-            }
+            self.audioService.playWithData(data: data, renderWave: nil, completeHandle: { (data) in
+                
+            }, errorHandle: { (url, error) in
+                
+            })
         }
     }
     
-    fileprivate func startStreaming() {
-        guard let stt = stt else {
-            return
-        }
-        
-        var settings = RecognitionSettings(contentType: .opus)
-        settings.continuous = true
-        settings.interimResults = true
-        let failure = { (error: Error) in print(error) }
-        let _ = stt.recognizeMicrophone(settings: settings, failure: failure) { results in
-            print(results.bestTranscript)
-        }
-    }
-    
-    fileprivate func stopStreaming1() {
-        stt?.stopRecognizeMicrophone()
-    }
-    
-    //
     fileprivate func startStopStreaming() {
-        print(#function)
-        // stop if already streaming
         if (isStreaming) {
-            captureSession?.stopRunning()
             stopStreaming?()
-//            startStopStreamingCustomButton.setTitle("Start Streaming (Custom)", forState: .Normal)
             isStreaming = false
-            return
+            
+            // stop recognizing microphone audio
+            speechToTextSession.stopMicrophone()
+            speechToTextSession.stopRequest()
+            speechToTextSession.disconnect()
+        }else {
+            // set streaming
+            isStreaming = true
+            
+            // change button title
+            //        startStopStreamingCustomButton.setTitle("Stop Streaming (Custom)", forState: .Normal)
+            
+            // ensure there is at least one audio input device available
+            let devices = AVCaptureDevice.devices(withMediaType: AVMediaTypeAudio)
+            guard !(devices?.isEmpty)! else {
+                let domain = "swift.ViewController"
+                let code = -1
+                let description = "Unable to access the microphone."
+                let userInfo = [NSLocalizedDescriptionKey: description]
+                let error = NSError(domain: domain, code: code, userInfo: userInfo)
+                failureStreaming(error)
+                return
+            }
+            
+            // define callbacks
+            speechToTextSession.onConnect = { print("STT: connected") }
+            speechToTextSession.onDisconnect = { print("STT: disconnected") }
+            speechToTextSession.onError = { error in print(error) }
+            //        speechToTextSession.onPowerData = { decibels in print(decibels) }
+            //        speechToTextSession.onMicrophoneData = { data in print("received data") }
+            
+            speechToTextSession.onResults = { results in
+                let bestTranscript = results.bestTranscript
+                print("bestTranscript: \(bestTranscript)")
+                self.delegate?.capturedSpeech(bestTranscript)
+                
+                guard let lastResult = results.results.last else { return }
+                if lastResult.final == false { return }
+                print("translating:\(bestTranscript)")
+                
+                //trigger translator only if last result's final value is true
+                let failure = { (error: Error) in print(error) }
+                self.languageTranslator?.translate(bestTranscript, withModelID: "zh-en-patent", failure: failure, success: { (translateResponse) in
+                    if let trans = translateResponse.translations.first?.translation {
+                        print("translated:" + trans)
+                        DispatchQueue.main.async {
+                            self.delegate?.translatedSpeech(trans)
+                        }
+                    }
+                })
+                
+            }
+            
+            // define recognition request settings
+            var settings = RecognitionSettings(contentType: .opus)
+            settings.interimResults = true
+            settings.continuous = true
+            
+            speechToTextSession.connect()
+            speechToTextSession.startRequest(settings: settings)
+            speechToTextSession.startMicrophone()
         }
         
-        // set streaming
-        isStreaming = true
-        
-        // change button title
-//        startStopStreamingCustomButton.setTitle("Stop Streaming (Custom)", forState: .Normal)
-        
-        // ensure SpeechToText service is up
-        guard let stt = stt else {
-            return
-        }
-        
-        // ensure there is at least one audio input device available
-        let devices = AVCaptureDevice.devices(withMediaType: AVMediaTypeAudio)
-        guard !(devices?.isEmpty)! else {
-            let domain = "swift.ViewController"
-            let code = -1
-            let description = "Unable to access the microphone."
-            let userInfo = [NSLocalizedDescriptionKey: description]
-            let error = NSError(domain: domain, code: code, userInfo: userInfo)
-            failureStreaming(error)
-            return
-        }
-        
-        // create capture session
-        captureSession = AVCaptureSession()
-        guard let captureSession = captureSession else {
-            return
-        }
-        
-        // add microphone as input to capture session
-        let microphoneDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio)
-        let microphoneInput = try? AVCaptureDeviceInput(device: microphoneDevice)
-        if captureSession.canAddInput(microphoneInput) {
-            captureSession.addInput(microphoneInput)
-        }
-        
-        // define recognition request settings
-        var settings = RecognitionSettings(contentType: .opus)
-        settings.interimResults = true
-        settings.continuous = true
-        
-        let failure = { (error: Error) in print(error) }
-        let _ = stt.recognizeMicrophone(settings: settings, failure: failure) { results in
-            print(results.bestTranscript)
-        }
-        
-        // start streaming
-        captureSession.startRunning()
     }
     
     fileprivate func startStopRecording() {
-        print(#function)
-        // ensure recorder is set up
-        guard let recorder = recorder else {
-            failure("Start/Stop Recording", message: "Recorder not properly set up.")
-            return
-        }
-        
-        // stop playing previous recording
-        if let player = player {
-            if (player.isPlaying) {
-                player.stop()
-            }
-        }
-        
-        // start/stop recording
-        if (!recorder.isRecording) {
-            do {
-                let session = AVAudioSession.sharedInstance()
-                try session.setActive(true)
-                recorder.record()
-                actionButton.backgroundColor = UIColor.red
-                //                startStopRecordingButton.setTitle("Stop Recording", forState: .Normal)
-                //                playRecordingButton.enabled = false
-                //                transcribeButton.enabled = false
-            } catch {
-                failure("Start/Stop Recording", message: "Error setting session active.")
-            }
+        if audioService.isRecording {
+            actionButton.backgroundColor = StyleKit.actionButtonGreen
+            audioService.stop()
+            print("recorder stopped")
         } else {
-            do {
-                recorder.stop()
-                let session = AVAudioSession.sharedInstance()
-                player?.stop()
-                player?.prepareToPlay()
-                try session.setActive(false)
-                actionButton.backgroundColor = UIColor.green
-                //                startStopRecordingButton.setTitle("Start Recording", forState: .Normal)
-                //                playRecordingButton.enabled = true
-                //                transcribeButton.enabled = true
-            } catch {
-                failure("Start/Stop Recording", message: "Error setting session inactive.")
-            }
+            self.btnSave.isHidden = true
+            actionButton.backgroundColor = StyleKit.actionButtonRed
+            audioService.record(fileURL: audioFilePath, renderWave: waveTimeView, completeHandle: { (url) in
+                print("completeHandle: \(url)")
+                self.btnSave.isHidden = false
+            }, errorHandle: { (url, error) in
+                print("errorHandle: \(url) \(error)")
+            })
         }
+        
     }
     
     fileprivate func failure(_ title: String, message: String) {
@@ -295,9 +237,6 @@ class ControlPanel: UIViewController {
         let message = error.localizedDescription
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default) { action in
-            //            self.startStopStreamingCustomButton.enabled = true
-            //            self.startStopStreamingCustomButton.setTitle("Start Streaming (Custom)",
-            //                                                         forState: .Normal)
             self.isStreaming = false
         }
         alert.addAction(ok)
@@ -307,32 +246,6 @@ class ControlPanel: UIViewController {
     fileprivate func titleCase(_ s: String) -> String {
         let first = String(s.characters.prefix(1)).uppercased()
         return first + String(s.characters.dropFirst())
-    }
-    
-    fileprivate func showResults(_ results: [SpeechRecognitionResult]) {
-        var text = ""
-        
-        for result in results {
-            if let transcript = result.alternatives.last?.transcript, result.final == true {
-                let title = titleCase(transcript)
-                text += String(title.characters.dropLast()) + "." + " "
-            }
-        }
-        
-        var txt = ""
-        if results.last?.final == false {
-            if let transcript = results.last?.alternatives.last?.transcript {
-                txt = titleCase(transcript)
-            }
-        }
-        print(text)
-        if txt.isEmpty == false {
-            translate(txt) { (response) in
-                if let translated = response.translations.last {
-                    self.delegate?.translatedSpeech(translated.translation);
-                }
-            }
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -357,7 +270,7 @@ extension ControlPanel: AVAudioRecorderDelegate {
     
     fileprivate func transcribe(_ url: URL) {
         // ensure SpeechToText service is set up
-        guard let stt = stt else {
+        guard let stt = speechToText else {
             return
         }
         
@@ -369,29 +282,20 @@ extension ControlPanel: AVAudioRecorderDelegate {
         var settings = RecognitionSettings(contentType: .wav)
         settings.interimResults = true
         
+        //MARK: TODO:
         stt.recognize(audio: data, settings: settings) { (results) in
-            self.showResults(results.results)
+//            self.showResults(results.results)
         }
        
     }
     
     fileprivate func playRecording() {
         
-        // ensure recorder is set up
-        guard let recorder = recorder else {
-            failure("Play Recording", message: "Recorder not properly set up")
-            return
+        if !audioService.isRecording {
+            //TODO: file name
+//            audioService.playWithData(data: <#T##Data#>, renderWave: <#T##AudioWaveView?#>, completeHandle: <#T##AudioServiceCompletionBlockWithData?##AudioServiceCompletionBlockWithData?##(Data) -> ()#>, errorHandle: <#T##AudioServiceErrorBlock?##AudioServiceErrorBlock?##(URL, Error) -> ()#>)
         }
         
-        // play saved recording
-        if (!recorder.isRecording) {
-            do {
-                player = try AVAudioPlayer(contentsOf: recorder.url)
-                player?.play()
-            } catch {
-                failure("Play Recording", message: "Error creating audio player.")
-            }
-        }
     }
     
 }
@@ -434,7 +338,7 @@ extension ControlPanel {
 
 extension ControlPanel {
     
-    fileprivate func instantiatTranslator() {
+    fileprivate func initTranslator() {
         // identify credentials file
         let bundle = Bundle(for: type(of: self))
         guard let credentialsURL = bundle.path(forResource: "Credentials", ofType: "plist") else {
@@ -461,6 +365,12 @@ extension ControlPanel {
             return
         }
         
-        translator = LanguageTranslator(username: user, password: password)
+
+        languageTranslator = LanguageTranslator(username: user, password: password)
+        
+//        languageTranslator!.getModels { (models) in
+//            print(models)
+//        }
+        
     }
 }
