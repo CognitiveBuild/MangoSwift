@@ -23,6 +23,7 @@ class WaveTimeView: UIView, AudioWaveView {
     }
     
     func update(time:String, withWaveData data:[Float]) {
+        timeLabel.isHidden = false
         timeLabel.text = time
         waveView.data = data
         waveView.setNeedsDisplay()
