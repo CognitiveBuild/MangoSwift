@@ -27,7 +27,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWQ-7z-dQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-551" y="-27"/>
+            <point key="canvasLocation" x="-314" y="-187"/>
         </scene>
         <!--Catalog-->
         <scene sceneID="aUX-dG-rfX">
@@ -35,7 +35,7 @@
                 <viewControllerPlaceholder storyboardName="Catalog" id="hPo-br-XpS" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1kY-Bx-yAU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-130.5" y="-313"/>
+            <point key="canvasLocation" x="194" y="-446"/>
         </scene>
         <!--mango-->
         <scene sceneID="tne-QT-ifu">
@@ -86,7 +86,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="250" y="-157"/>
+            <point key="canvasLocation" x="585" y="-185"/>
         </scene>
         <!--Mango View Controller-->
         <scene sceneID="D1g-Sp-d5j">
@@ -101,14 +101,14 @@
                             <tableViewSection headerTitle="Transcription" id="ryp-ii-tqa">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="115" id="gOM-Yi-sXd">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="115"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gOM-Yi-sXd" id="wrS-FM-N9L">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="114.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LhJ-gM-DGE">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="115"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <string key="text">hi I am Mango.
 
@@ -130,14 +130,14 @@ I could hear what people are saying, then translate the speech into language you
                             <tableViewSection headerTitle="Translation" id="Tcq-0R-e0X">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="115" id="HS8-m5-llA">
-                                        <rect key="frame" x="0.0" y="226.5" width="375" height="115"/>
+                                        <rect key="frame" x="0.0" y="227" width="375" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HS8-m5-llA" id="jzb-rK-YB4">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="114.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eVw-DS-ajQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="115"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <string key="text">嗨， 我是芒果。
 
@@ -169,7 +169,7 @@ I could hear what people are saying, then translate the speech into language you
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Txm-7O-dvR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1078" y="-27"/>
+            <point key="canvasLocation" x="1334" y="-186"/>
         </scene>
         <!--ControlPanel-->
         <scene sceneID="jjL-uY-UK2">
@@ -177,7 +177,7 @@ I could hear what people are saying, then translate the speech into language you
                 <viewControllerPlaceholder storyboardIdentifier="ControlPannel" storyboardName="ControlPanel" id="fnU-AM-9fs" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YSb-DA-PI7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="306" y="423"/>
+            <point key="canvasLocation" x="628" y="290"/>
         </scene>
     </scenes>
 </document>

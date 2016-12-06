@@ -45,7 +45,7 @@ class MainViewController: UIViewController {
 extension MainViewController: ControlPanelDelegate {
     
     func didClickedActionButton() {
-        self.mangoVC.transcriptionTextView.tex
+//        self.mangoVC.transcriptionTextView.tex
 //        self.mangoVC.clearTextView()
     }
     

@@ -11,6 +11,9 @@
 		2B3F85F81DF5224B008CFDF7 /* AudioWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F85F71DF5224B008CFDF7 /* AudioWaveView.swift */; };
 		2B3F85FA1DF5226B008CFDF7 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F85F91DF5226B008CFDF7 /* StyleKit.swift */; };
 		2B3F85FC1DF5236E008CFDF7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F85FB1DF5236E008CFDF7 /* UIColor+Extension.swift */; };
+		2B483E1A1DF669FC0075859C /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B483E191DF669FC0075859C /* ActionButton.swift */; };
+		2B483E1D1DF679420075859C /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B483E1C1DF679420075859C /* GCD.swift */; };
+		2B483E1F1DF68A2F0075859C /* CAAnimation+closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B483E1E1DF68A2F0075859C /* CAAnimation+closure.swift */; };
 		2B50F05A1D378D9B00A23EC7 /* SpeechToTextV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0501D378D5A00A23EC7 /* SpeechToTextV1.framework */; };
 		2B50F05B1D378D9B00A23EC7 /* SpeechToTextV1.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0501D378D5A00A23EC7 /* SpeechToTextV1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2B50F05C1D378D9B00A23EC7 /* TextToSpeechV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50F0511D378D5A00A23EC7 /* TextToSpeechV1.framework */; };
@@ -41,7 +44,6 @@
 		2BCE38CC1D2A3611007FA5D4 /* Feedback.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCE38CB1D2A3611007FA5D4 /* Feedback.storyboard */; };
 		2BCE38D01D2A3649007FA5D4 /* Languages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCE38CF1D2A3649007FA5D4 /* Languages.storyboard */; };
 		2BCE38D21D2A36AF007FA5D4 /* ControlPanel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCE38D11D2A36AF007FA5D4 /* ControlPanel.storyboard */; };
-		2BCE38D41D2A411A007FA5D4 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCE38D31D2A411A007FA5D4 /* CircleButton.swift */; };
 		2BCE38D61D2A4C33007FA5D4 /* MangoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCE38D51D2A4C33007FA5D4 /* MangoViewController.swift */; };
 		2BFAFC5E1DEFF918002636A2 /* SpeechSample.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2BFAFC5D1DEFF918002636A2 /* SpeechSample.wav */; };
 /* End PBXBuildFile section */
@@ -86,6 +88,9 @@
 		2B3F85F71DF5224B008CFDF7 /* AudioWaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioWaveView.swift; sourceTree = "<group>"; };
 		2B3F85F91DF5226B008CFDF7 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		2B3F85FB1DF5236E008CFDF7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		2B483E191DF669FC0075859C /* ActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		2B483E1C1DF679420075859C /* GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
+		2B483E1E1DF68A2F0075859C /* CAAnimation+closure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAAnimation+closure.swift"; sourceTree = "<group>"; };
 		2B50F0501D378D5A00A23EC7 /* SpeechToTextV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechToTextV1.framework; path = Carthage/Build/iOS/SpeechToTextV1.framework; sourceTree = "<group>"; };
 		2B50F0511D378D5A00A23EC7 /* TextToSpeechV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TextToSpeechV1.framework; path = Carthage/Build/iOS/TextToSpeechV1.framework; sourceTree = "<group>"; };
 		2B50F0521D378D5A00A23EC7 /* ToneAnalyzerV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToneAnalyzerV3.framework; path = Carthage/Build/iOS/ToneAnalyzerV3.framework; sourceTree = "<group>"; };
@@ -117,7 +122,6 @@
 		2BCE38CB1D2A3611007FA5D4 /* Feedback.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Feedback.storyboard; sourceTree = "<group>"; };
 		2BCE38CF1D2A3649007FA5D4 /* Languages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Languages.storyboard; sourceTree = "<group>"; };
 		2BCE38D11D2A36AF007FA5D4 /* ControlPanel.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ControlPanel.storyboard; sourceTree = "<group>"; };
-		2BCE38D31D2A411A007FA5D4 /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		2BCE38D51D2A4C33007FA5D4 /* MangoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MangoViewController.swift; sourceTree = "<group>"; };
 		2BFAFC5D1DEFF918002636A2 /* SpeechSample.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = SpeechSample.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,6 +156,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B483E1B1DF679290075859C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2B483E1C1DF679420075859C /* GCD.swift */,
+				2B483E1E1DF68A2F0075859C /* CAAnimation+closure.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		2B50F0261D37849400A23EC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +211,7 @@
 		2BCE38851D2A1573007FA5D4 /* Mango */ = {
 			isa = PBXGroup;
 			children = (
+				2B483E1B1DF679290075859C /* Utils */,
 				2B50F0681D38A4E700A23EC7 /* Resources */,
 				2BCE38861D2A1573007FA5D4 /* AppDelegate.swift */,
 				2BCE38B51D2A16BB007FA5D4 /* Catalog */,
@@ -273,7 +287,7 @@
 				2BCE38C11D2A34FD007FA5D4 /* ControlPanel.swift */,
 				2B3F85F71DF5224B008CFDF7 /* AudioWaveView.swift */,
 				2BCE38D11D2A36AF007FA5D4 /* ControlPanel.storyboard */,
-				2BCE38D31D2A411A007FA5D4 /* CircleButton.swift */,
+				2B483E191DF669FC0075859C /* ActionButton.swift */,
 				2B3F85F31DF5198D008CFDF7 /* AudioService.swift */,
 				2B3F85F91DF5226B008CFDF7 /* StyleKit.swift */,
 				2B3F85FB1DF5236E008CFDF7 /* UIColor+Extension.swift */,
@@ -457,8 +471,8 @@
 				2BCE38BB1D2A1777007FA5D4 /* CatalogViewController.swift in Sources */,
 				2BCE38B91D2A1769007FA5D4 /* MainViewController.swift in Sources */,
 				2BCE38BE1D2A3376007FA5D4 /* LanguagesViewController.swift in Sources */,
-				2BCE38D41D2A411A007FA5D4 /* CircleButton.swift in Sources */,
 				2B3F85F81DF5224B008CFDF7 /* AudioWaveView.swift in Sources */,
+				2B483E1A1DF669FC0075859C /* ActionButton.swift in Sources */,
 				2B3F85FA1DF5226B008CFDF7 /* StyleKit.swift in Sources */,
 				2BCE38C01D2A3384007FA5D4 /* FeedbackViewController.swift in Sources */,
 				2BCE38D61D2A4C33007FA5D4 /* MangoViewController.swift in Sources */,
@@ -466,6 +480,8 @@
 				2B3F85FC1DF5236E008CFDF7 /* UIColor+Extension.swift in Sources */,
 				2BCE38C51D2A3511007FA5D4 /* PlaybackViewController.swift in Sources */,
 				2BCE38C21D2A34FD007FA5D4 /* ControlPanel.swift in Sources */,
+				2B483E1D1DF679420075859C /* GCD.swift in Sources */,
+				2B483E1F1DF68A2F0075859C /* CAAnimation+closure.swift in Sources */,
 				2B9F56D21DF55F6D00907094 /* PlaceholderUITextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

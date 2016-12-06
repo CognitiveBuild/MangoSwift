@@ -36,7 +36,7 @@ class ControlPanel: UIViewController {
     var stopStreaming: ((Void) -> Void)? = nil
     var delegate: ControlPanelDelegate?
     
-    @IBOutlet weak var actionButton: CircleButton!
+    @IBOutlet weak var actionButton: ActionButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -203,12 +203,12 @@ class ControlPanel: UIViewController {
     
     fileprivate func startStopRecording() {
         if audioService.isRecording {
-            actionButton.backgroundColor = StyleKit.actionButtonGreen
+            actionButton.stopAction(false)
             audioService.stop()
             print("recorder stopped")
         } else {
             self.btnSave.isHidden = true
-            actionButton.backgroundColor = StyleKit.actionButtonRed
+            actionButton.startAction()
             audioService.record(fileURL: audioFilePath, renderWave: waveTimeView, completeHandle: { (url) in
                 print("completeHandle: \(url)")
                 self.btnSave.isHidden = false
